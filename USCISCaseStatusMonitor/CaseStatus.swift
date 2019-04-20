@@ -21,6 +21,7 @@ enum Either<V, E: Error> {
 
 enum APIError: Error {
     case apiError
+    case noStatusError
 }
 
 class USCISStatus {
@@ -32,16 +33,21 @@ class USCISStatus {
             return component!
         }
         
-        let request = URLRequest(url: NSURL(string: "https://egov.uscis.gov/casestatus/mycasestatus.do?appReceiptNum=")! as URL)
+        let request = URLRequest(url: urlComponent.url!)
         var response: AutoreleasingUnsafeMutablePointer<URLResponse?>? = nil
         let data = try? NSURLConnection.sendSynchronousRequest(request, returning: response)
         
         if let doc = try? HTML(html: String(decoding: data!, as: UTF8.self), encoding: .utf8) {
-            let status = doc.xpath("//div/h1")
-            let description = doc.xpath("//div/h1/following-sibling::p")
-            
-            return Either.value(CaseStatus(status: status.first!.text!,
-                                           description: description.first!.text!))
+            if doc.at_xpath("//div[@id='formErrorMessages']/h4") != nil {
+                return Either.error(.noStatusError)
+            }
+            guard let status = doc.at_xpath("//div/h1") else {
+                return Either.error(.noStatusError)
+            }
+            guard let description = doc.at_xpath("//div/h1/following-sibling::p") else {
+                return Either.error(.noStatusError)
+            }
+            return Either.value(CaseStatus(status: status.text!, description: description.text!))
         }
         
         return Either.error(.apiError)

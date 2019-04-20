@@ -18,7 +18,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Insert code here to initialize your application
         if let button = statusItem.button {
             button.image = NSImage(named: "face")
-//            button.action = #selector(showWeather(sender:))
         }
         
         switch USCISStatus().fetchCurrentStatus() {
@@ -27,26 +26,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             menu.addItem(NSMenuItem.separator())
             
             let item = NSMenuItem(title: "", action: nil, keyEquivalent: "")
-            let description = currentStatus.description.replacingOccurrences(of: "\\s+", with: " ", options: .regularExpression)
-            var lines: [String] = []
-            let offset = 50
-            var startIndex = description.startIndex
-            var midIndex = description.startIndex
-            while (midIndex != description.endIndex) {
-                description.formIndex(&midIndex, offsetBy: 50, limitedBy: description.endIndex)
-                var endIndex = description[midIndex...].firstIndex(of: " ") ?? description.endIndex
-                lines.append(String(description[startIndex..<endIndex]))
-                description.formIndex(&endIndex, offsetBy: 1, limitedBy: description.endIndex)
-                startIndex = endIndex
-                midIndex = endIndex
-            }
-            
-            item.attributedTitle = NSAttributedString(string: lines.joined(separator: "\n"), attributes: nil)
+            let description = splitStringToLines(
+                currentStatus.description.replacingOccurrences(of: "\\s+", with: " ", options: .regularExpression),
+                50)
+            item.attributedTitle = NSAttributedString(string: description, attributes: nil)
 
             menu.addItem(item)
 
-        case .error(let error):
-            print(error)
+        case .error(_):
+            menu.addItem(NSMenuItem(title: "Error: Unable to get case status. Check case number.", action: nil, keyEquivalent: ""))
         }
         
         menu.addItem(NSMenuItem.separator())
@@ -60,9 +48,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }
-    
-    @objc func showWeather(sender: NSStatusBarButton) {
-        print("Sunshine")
-    }    
 }
 
+func splitStringToLines(_ str: String, _ approximateLength: Int) -> String {
+    var lines: [String] = []
+    var startIndex = str.startIndex
+    var midIndex = str.startIndex
+    while (midIndex != str.endIndex) {
+        str.formIndex(&midIndex, offsetBy: approximateLength, limitedBy: str.endIndex)
+        var endIndex = str[midIndex...].firstIndex(of: " ") ?? str.endIndex
+        lines.append(String(str[startIndex..<endIndex]))
+        str.formIndex(&endIndex, offsetBy: 1, limitedBy: str.endIndex)
+        startIndex = endIndex
+        midIndex = endIndex
+    }
+    return lines.joined(separator: "\n")
+}
