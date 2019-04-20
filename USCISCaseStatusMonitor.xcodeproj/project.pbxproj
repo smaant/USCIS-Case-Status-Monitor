@@ -1,0 +1,514 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		65BC4C2C2268500E00E3502E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BC4C2B2268500E00E3502E /* AppDelegate.swift */; };
+		65BC4C2E2268500E00E3502E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BC4C2D2268500E00E3502E /* ViewController.swift */; };
+		65BC4C302268500F00E3502E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65BC4C2F2268500F00E3502E /* Assets.xcassets */; };
+		65BC4C332268500F00E3502E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65BC4C312268500F00E3502E /* Main.storyboard */; };
+		65BC4C3F2268500F00E3502E /* USCIS_Case_Status_CheckerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BC4C3E2268500F00E3502E /* USCIS_Case_Status_CheckerTests.swift */; };
+		65BC4C4A2269A0B200E3502E /* CaseStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BC4C492269A0B200E3502E /* CaseStatus.swift */; };
+		65BC4C4D226A80B100E3502E /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 65BC4C4C226A80B100E3502E /* Cartfile */; };
+		65BC4C53226A964800E3502E /* Kanna.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65BC4C52226A964800E3502E /* Kanna.framework */; };
+		65BC4C54226A964800E3502E /* Kanna.framework in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 65BC4C52226A964800E3502E /* Kanna.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		65BC4C57226AEEE500E3502E /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 65BC4C56226AEEE500E3502E /* .gitignore */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		65BC4C3B2268500F00E3502E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 65BC4C202268500E00E3502E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 65BC4C272268500E00E3502E;
+			remoteInfo = "USCIS Case Status Checker";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		65BC4C51226A95E800E3502E /* Embed Libraries */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				65BC4C54226A964800E3502E /* Kanna.framework in Embed Libraries */,
+			);
+			name = "Embed Libraries";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		65BC4C282268500E00E3502E /* USCISCaseStatusMonitor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = USCISCaseStatusMonitor.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		65BC4C2B2268500E00E3502E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		65BC4C2D2268500E00E3502E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		65BC4C2F2268500F00E3502E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		65BC4C322268500F00E3502E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		65BC4C342268500F00E3502E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		65BC4C3A2268500F00E3502E /* USCISCaseStatusMonitorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = USCISCaseStatusMonitorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		65BC4C3E2268500F00E3502E /* USCIS_Case_Status_CheckerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USCIS_Case_Status_CheckerTests.swift; sourceTree = "<group>"; };
+		65BC4C402268500F00E3502E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		65BC4C492269A0B200E3502E /* CaseStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseStatus.swift; sourceTree = "<group>"; };
+		65BC4C4B226A79CD00E3502E /* USCISCaseStatusMonitor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = USCISCaseStatusMonitor.entitlements; sourceTree = "<group>"; };
+		65BC4C4C226A80B100E3502E /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
+		65BC4C52226A964800E3502E /* Kanna.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kanna.framework; path = Carthage/Build/Mac/Kanna.framework; sourceTree = "<group>"; };
+		65BC4C55226AEE8300E3502E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		65BC4C56226AEEE500E3502E /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		65BC4C252268500E00E3502E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				65BC4C53226A964800E3502E /* Kanna.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		65BC4C372268500F00E3502E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		65BC4C1F2268500E00E3502E = {
+			isa = PBXGroup;
+			children = (
+				65BC4C56226AEEE500E3502E /* .gitignore */,
+				65BC4C55226AEE8300E3502E /* README.md */,
+				65BC4C52226A964800E3502E /* Kanna.framework */,
+				65BC4C4C226A80B100E3502E /* Cartfile */,
+				65BC4C2A2268500E00E3502E /* USCISCaseStatusMonitor */,
+				65BC4C3D2268500F00E3502E /* USCISCaseStatusMonitorTests */,
+				65BC4C292268500E00E3502E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		65BC4C292268500E00E3502E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				65BC4C282268500E00E3502E /* USCISCaseStatusMonitor.app */,
+				65BC4C3A2268500F00E3502E /* USCISCaseStatusMonitorTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		65BC4C2A2268500E00E3502E /* USCISCaseStatusMonitor */ = {
+			isa = PBXGroup;
+			children = (
+				65BC4C4B226A79CD00E3502E /* USCISCaseStatusMonitor.entitlements */,
+				65BC4C2B2268500E00E3502E /* AppDelegate.swift */,
+				65BC4C2D2268500E00E3502E /* ViewController.swift */,
+				65BC4C2F2268500F00E3502E /* Assets.xcassets */,
+				65BC4C312268500F00E3502E /* Main.storyboard */,
+				65BC4C342268500F00E3502E /* Info.plist */,
+				65BC4C492269A0B200E3502E /* CaseStatus.swift */,
+			);
+			path = USCISCaseStatusMonitor;
+			sourceTree = "<group>";
+		};
+		65BC4C3D2268500F00E3502E /* USCISCaseStatusMonitorTests */ = {
+			isa = PBXGroup;
+			children = (
+				65BC4C3E2268500F00E3502E /* USCIS_Case_Status_CheckerTests.swift */,
+				65BC4C402268500F00E3502E /* Info.plist */,
+			);
+			path = USCISCaseStatusMonitorTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		65BC4C272268500E00E3502E /* USCISCaseStatusMonitor */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 65BC4C432268500F00E3502E /* Build configuration list for PBXNativeTarget "USCISCaseStatusMonitor" */;
+			buildPhases = (
+				65BC4C242268500E00E3502E /* Sources */,
+				65BC4C252268500E00E3502E /* Frameworks */,
+				65BC4C262268500E00E3502E /* Resources */,
+				65BC4C51226A95E800E3502E /* Embed Libraries */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = USCISCaseStatusMonitor;
+			productName = "USCIS Case Status Checker";
+			productReference = 65BC4C282268500E00E3502E /* USCISCaseStatusMonitor.app */;
+			productType = "com.apple.product-type.application";
+		};
+		65BC4C392268500F00E3502E /* USCISCaseStatusMonitorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 65BC4C462268500F00E3502E /* Build configuration list for PBXNativeTarget "USCISCaseStatusMonitorTests" */;
+			buildPhases = (
+				65BC4C362268500F00E3502E /* Sources */,
+				65BC4C372268500F00E3502E /* Frameworks */,
+				65BC4C382268500F00E3502E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				65BC4C3C2268500F00E3502E /* PBXTargetDependency */,
+			);
+			name = USCISCaseStatusMonitorTests;
+			productName = "USCIS Case Status CheckerTests";
+			productReference = 65BC4C3A2268500F00E3502E /* USCISCaseStatusMonitorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		65BC4C202268500E00E3502E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1010;
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = "Anton Panferov";
+				TargetAttributes = {
+					65BC4C272268500E00E3502E = {
+						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
+					};
+					65BC4C392268500F00E3502E = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 65BC4C272268500E00E3502E;
+					};
+				};
+			};
+			buildConfigurationList = 65BC4C232268500E00E3502E /* Build configuration list for PBXProject "USCISCaseStatusMonitor" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 65BC4C1F2268500E00E3502E;
+			productRefGroup = 65BC4C292268500E00E3502E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				65BC4C272268500E00E3502E /* USCISCaseStatusMonitor */,
+				65BC4C392268500F00E3502E /* USCISCaseStatusMonitorTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		65BC4C262268500E00E3502E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				65BC4C57226AEEE500E3502E /* .gitignore in Resources */,
+				65BC4C4D226A80B100E3502E /* Cartfile in Resources */,
+				65BC4C302268500F00E3502E /* Assets.xcassets in Resources */,
+				65BC4C332268500F00E3502E /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		65BC4C382268500F00E3502E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		65BC4C242268500E00E3502E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				65BC4C4A2269A0B200E3502E /* CaseStatus.swift in Sources */,
+				65BC4C2E2268500E00E3502E /* ViewController.swift in Sources */,
+				65BC4C2C2268500E00E3502E /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		65BC4C362268500F00E3502E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				65BC4C3F2268500F00E3502E /* USCIS_Case_Status_CheckerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		65BC4C3C2268500F00E3502E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 65BC4C272268500E00E3502E /* USCISCaseStatusMonitor */;
+			targetProxy = 65BC4C3B2268500F00E3502E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		65BC4C312268500F00E3502E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				65BC4C322268500F00E3502E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		65BC4C412268500F00E3502E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		65BC4C422268500F00E3502E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		65BC4C442268500F00E3502E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = USCISCaseStatusMonitor/USCISCaseStatusMonitor.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = WBJ77JK6DD;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
+				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
+				INFOPLIST_FILE = USCISCaseStatusMonitor/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.smaant.USCISCaseStatusMonitor;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 4.2;
+			};
+			name = Debug;
+		};
+		65BC4C452268500F00E3502E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = USCISCaseStatusMonitor/USCISCaseStatusMonitor.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = WBJ77JK6DD;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
+				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
+				INFOPLIST_FILE = USCISCaseStatusMonitor/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.smaant.USCISCaseStatusMonitor;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 4.2;
+			};
+			name = Release;
+		};
+		65BC4C472268500F00E3502E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = WBJ77JK6DD;
+				INFOPLIST_FILE = "USCIS Case Status CheckerTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.smaant.USCIS-Case-Status-CheckerTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/USCISCaseStatusMonitor.app/Contents/MacOS/USCISCaseStatusMonitor";
+			};
+			name = Debug;
+		};
+		65BC4C482268500F00E3502E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = WBJ77JK6DD;
+				INFOPLIST_FILE = "USCIS Case Status CheckerTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.smaant.USCIS-Case-Status-CheckerTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/USCISCaseStatusMonitor.app/Contents/MacOS/USCISCaseStatusMonitor";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		65BC4C232268500E00E3502E /* Build configuration list for PBXProject "USCISCaseStatusMonitor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				65BC4C412268500F00E3502E /* Debug */,
+				65BC4C422268500F00E3502E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		65BC4C432268500F00E3502E /* Build configuration list for PBXNativeTarget "USCISCaseStatusMonitor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				65BC4C442268500F00E3502E /* Debug */,
+				65BC4C452268500F00E3502E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		65BC4C462268500F00E3502E /* Build configuration list for PBXNativeTarget "USCISCaseStatusMonitorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				65BC4C472268500F00E3502E /* Debug */,
+				65BC4C482268500F00E3502E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 65BC4C202268500E00E3502E /* Project object */;
+}
