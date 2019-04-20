@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import os
 import Kanna
 
 struct CaseStatus: Codable {
@@ -26,6 +27,7 @@ enum APIError: Error {
 
 class USCISStatus {
     func fetchCurrentStatus(caseNumber: String) -> Either<CaseStatus, APIError> {
+        os_log("Fetching case status for the case #%@", caseNumber)
         var urlComponent: URLComponents {
             var component = URLComponents(string: "https://egov.uscis.gov")
             component?.path = "/casestatus/mycasestatus.do"

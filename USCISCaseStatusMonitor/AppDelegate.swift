@@ -31,7 +31,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         updateStatus()
         let time = Timer.scheduledTimer(withTimeInterval: updateInterval, repeats: true) { (timer) in
-            print("timer is fired")
             self.updateStatus()
         }
         
