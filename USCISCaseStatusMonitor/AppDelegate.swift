@@ -13,6 +13,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     let menu = NSMenu()
+    
+    let caseNumber = ""
+    let updateInterval = 60.0
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
@@ -20,29 +23,37 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             button.image = NSImage(named: "face")
         }
         
-        switch USCISStatus().fetchCurrentStatus() {
-        case .value(let currentStatus):
-            menu.addItem(NSMenuItem(title: currentStatus.status, action: nil, keyEquivalent: ""))
-            menu.addItem(NSMenuItem.separator())
-            
-            let item = NSMenuItem(title: "", action: nil, keyEquivalent: "")
-            let description = splitStringToLines(
-                currentStatus.description.replacingOccurrences(of: "\\s+", with: " ", options: .regularExpression),
-                50)
-            item.attributedTitle = NSAttributedString(string: description, attributes: nil)
-
-            menu.addItem(item)
-
-        case .error(_):
-            menu.addItem(NSMenuItem(title: "Error: Unable to get case status. Check case number.", action: nil, keyEquivalent: ""))
-        }
-        
+        menu.addItem(NSMenuItem(title: "", action: nil, keyEquivalent: ""))
+        menu.addItem(NSMenuItem.separator())
+        menu.addItem(NSMenuItem(title: "", action: nil, keyEquivalent: ""))
         menu.addItem(NSMenuItem.separator())
         menu.addItem(NSMenuItem(title: "Quit", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
         
+        updateStatus()
+        let time = Timer.scheduledTimer(withTimeInterval: updateInterval, repeats: true) { (timer) in
+            print("timer is fired")
+            self.updateStatus()
+        }
+        
         statusItem.menu = menu
-        
-        
+    }
+    
+    func updateStatus() {
+        switch USCISStatus().fetchCurrentStatus(caseNumber: caseNumber) {
+        case .value(let currentStatus):
+            let description = splitStringToLines(
+                currentStatus.description.replacingOccurrences(of: "\\s+", with: " ", options: .regularExpression),
+                50)
+            
+            menu.item(at: 0)?.title = currentStatus.status
+            menu.item(at: 2)?.attributedTitle = NSAttributedString(string: description, attributes: nil)
+            menu.item(at: 2)?.isHidden = false
+            
+        case .error(_):
+            menu.item(at: 0)?.title = "Error: Unable to get case status. Check case number."
+            menu.item(at: 2)?.title = ""
+            menu.item(at: 2)?.isHidden = true
+        }
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {

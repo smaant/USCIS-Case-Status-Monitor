@@ -25,11 +25,11 @@ enum APIError: Error {
 }
 
 class USCISStatus {
-    func fetchCurrentStatus() -> Either<CaseStatus, APIError> {
+    func fetchCurrentStatus(caseNumber: String) -> Either<CaseStatus, APIError> {
         var urlComponent: URLComponents {
             var component = URLComponents(string: "https://egov.uscis.gov")
             component?.path = "/casestatus/mycasestatus.do"
-            component?.queryItems = [URLQueryItem(name: "appReceiptNum", value: "")]
+            component?.queryItems = [URLQueryItem(name: "appReceiptNum", value: caseNumber)]
             return component!
         }
         
