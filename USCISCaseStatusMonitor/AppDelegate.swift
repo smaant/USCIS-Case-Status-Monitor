@@ -14,8 +14,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     let menu = NSMenu()
     
-    let caseNumber = ""
     let updateInterval = 60.0
+    let prefs = Preferences()
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
@@ -27,6 +27,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         menu.addItem(NSMenuItem.separator())
         menu.addItem(NSMenuItem(title: "", action: nil, keyEquivalent: ""))
         menu.addItem(NSMenuItem.separator())
+        menu.addItem(NSMenuItem(title: "Preferences...", action: #selector(showPrefeneces(sender:)), keyEquivalent: ","))
+        menu.addItem(NSMenuItem.separator())
         menu.addItem(NSMenuItem(title: "Quit", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
         
         updateStatus()
@@ -35,10 +37,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
         statusItem.menu = menu
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name("PrefsChanged"), object: nil, queue: nil) { (notification) in
+            self.updateStatus()
+        }
     }
     
     func updateStatus() {
-        switch USCISStatus().fetchCurrentStatus(caseNumber: caseNumber) {
+        switch USCISStatus().fetchCurrentStatus(caseNumber: prefs.caseNumber ?? "") {
         case .value(let currentStatus):
             let description = splitStringToLines(
                 currentStatus.description.replacingOccurrences(of: "\\s+", with: " ", options: .regularExpression),
@@ -53,6 +59,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             menu.item(at: 2)?.title = ""
             menu.item(at: 2)?.isHidden = true
         }
+    }
+    
+    @objc func showPrefeneces(sender: NSMenuItem) {
+        let storyboard = NSStoryboard(name: NSStoryboard.Name("Main"), bundle: nil)
+        let preferencesController = storyboard.instantiateController(withIdentifier: "PreferencesWindowController") as? NSWindowController
+        preferencesController?.showWindow(sender)
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {

@@ -9,11 +9,13 @@
 import Cocoa
 
 class ViewController: NSViewController {
+    
+    var prefs = Preferences()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        caseNumber.stringValue = prefs.caseNumber ?? ""
     }
 
     override var representedObject: Any? {
@@ -21,7 +23,12 @@ class ViewController: NSViewController {
         // Update the view, if already loaded.
         }
     }
-
-
+    
+    override func viewWillDisappear() {
+        prefs.caseNumber = caseNumber.stringValue
+        NotificationCenter.default.post(name: NSNotification.Name("PrefsChanged"), object: nil)
+    }
+    
+    @IBOutlet weak var caseNumber: NSTextField!
 }
 
