@@ -16,6 +16,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     let updateInterval = 60.0
     let prefs = Preferences()
+    
+    let storyboard = NSStoryboard(name: NSStoryboard.Name("Main"), bundle: nil)
+    var preferencesController: NSWindowController?
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
@@ -30,17 +33,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         menu.addItem(NSMenuItem(title: "Preferences...", action: #selector(showPrefeneces(sender:)), keyEquivalent: ","))
         menu.addItem(NSMenuItem.separator())
         menu.addItem(NSMenuItem(title: "Quit", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
+        statusItem.menu = menu
         
         updateStatus()
-        let time = Timer.scheduledTimer(withTimeInterval: updateInterval, repeats: true) { (timer) in
+        Timer.scheduledTimer(withTimeInterval: updateInterval, repeats: true) { (timer) in
             self.updateStatus()
         }
-        
-        statusItem.menu = menu
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name("PrefsChanged"), object: nil, queue: nil) { (notification) in
             self.updateStatus()
         }
+        
+        preferencesController = storyboard.instantiateController(withIdentifier: "PreferencesWindowController") as? NSWindowController
     }
     
     func updateStatus() {
@@ -62,8 +66,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     @objc func showPrefeneces(sender: NSMenuItem) {
-        let storyboard = NSStoryboard(name: NSStoryboard.Name("Main"), bundle: nil)
-        let preferencesController = storyboard.instantiateController(withIdentifier: "PreferencesWindowController") as? NSWindowController
         preferencesController?.showWindow(sender)
     }
     

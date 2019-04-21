@@ -14,8 +14,12 @@ class ViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         caseNumber.stringValue = prefs.caseNumber ?? ""
+    }
+    
+    override func viewWillAppear() {
+        NSApplication.shared.activate(ignoringOtherApps: true)
+        view.window?.level = .floating
     }
 
     override var representedObject: Any? {
