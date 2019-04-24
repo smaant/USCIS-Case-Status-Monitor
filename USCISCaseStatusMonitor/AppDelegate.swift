@@ -14,25 +14,35 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     let menu = NSMenu()
     
-    let updateInterval = 60.0
-    let prefs = Preferences()
+    var statusMenuItem = NSMenuItem(title: "", action: nil, keyEquivalent: "")
+    var descriptionMenuItem = NSMenuItem(title: "", action: nil, keyEquivalent: "")
+    var ackMenuItem = NSMenuItem(title: "Aknowledge current status", action: #selector(acknowledgeCurrentStatus(sender:)), keyEquivalent: "")
+    
+    let updateInterval = 600.0
+    var prefs = Preferences()
+    var currentStatus: CaseStatus?
     
     let storyboard = NSStoryboard(name: NSStoryboard.Name("Main"), bundle: nil)
     var preferencesController: NSWindowController?
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application
         if let button = statusItem.button {
-            button.image = NSImage(named: "face")
+            button.image = NSImage(named: "unchanged")
         }
         
-        menu.addItem(NSMenuItem(title: "", action: nil, keyEquivalent: ""))
+        menu.addItem(statusMenuItem)
         menu.addItem(NSMenuItem.separator())
-        menu.addItem(NSMenuItem(title: "", action: nil, keyEquivalent: ""))
+        menu.addItem(descriptionMenuItem)
         menu.addItem(NSMenuItem.separator())
+        menu.addItem(ackMenuItem)
         menu.addItem(NSMenuItem(title: "Preferences...", action: #selector(showPrefeneces(sender:)), keyEquivalent: ","))
         menu.addItem(NSMenuItem.separator())
         menu.addItem(NSMenuItem(title: "Quit", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
+        
+        statusMenuItem.isEnabled = false
+        descriptionMenuItem.isEnabled = false
+        menu.autoenablesItems = false
+        
         statusItem.menu = menu
         
         updateStatus()
@@ -41,27 +51,53 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name("PrefsChanged"), object: nil, queue: nil) { (notification) in
+            self.prefs.lastAcknowledgedStatus = nil
             self.updateStatus()
         }
         
         preferencesController = storyboard.instantiateController(withIdentifier: "PreferencesWindowController") as? NSWindowController
     }
     
+    @objc func acknowledgeCurrentStatus(sender: NSMenuItem) {
+        if let currentStatus = currentStatus {
+            prefs.lastAcknowledgedStatus = currentStatus
+            updateMenuBarIcon(newStatus: currentStatus)
+        }
+    }
+    
+    func updateMenuBarIcon(newStatus: CaseStatus?) {
+        if prefs.lastAcknowledgedStatus == nil {
+            prefs.lastAcknowledgedStatus = newStatus
+        }
+        
+        if prefs.lastAcknowledgedStatus == newStatus {
+            statusItem.button?.image = NSImage(named: "unchanged")
+            ackMenuItem.isEnabled = false
+        } else {
+            statusItem.button?.image = NSImage(named: "changed")
+            ackMenuItem.isEnabled = true
+        }
+    }
+    
     func updateStatus() {
         switch USCISStatus().fetchCurrentStatus(caseNumber: prefs.caseNumber ?? "") {
         case .value(let currentStatus):
+            self.currentStatus = currentStatus
+            updateMenuBarIcon(newStatus: currentStatus)
+            
             let description = splitStringToLines(
                 currentStatus.description.replacingOccurrences(of: "\\s+", with: " ", options: .regularExpression),
                 50)
             
-            menu.item(at: 0)?.title = currentStatus.status
-            menu.item(at: 2)?.attributedTitle = NSAttributedString(string: description, attributes: nil)
-            menu.item(at: 2)?.isHidden = false
+            statusMenuItem.title = currentStatus.status
+            descriptionMenuItem.attributedTitle = NSAttributedString(string: description, attributes: nil)
+            descriptionMenuItem.isHidden = false
             
         case .error(_):
-            menu.item(at: 0)?.title = "Error: Unable to get case status. Check case number."
-            menu.item(at: 2)?.title = ""
-            menu.item(at: 2)?.isHidden = true
+            self.currentStatus = nil
+            updateMenuBarIcon(newStatus: nil)
+            statusMenuItem.title = "Error: Unable to get case status. Check case number."
+            descriptionMenuItem.isHidden = true
         }
     }
     

@@ -10,9 +10,13 @@ import Foundation
 import os
 import Kanna
 
-struct CaseStatus: Codable {
+struct CaseStatus: Codable, Equatable {
     let status: String
     let description: String
+    
+    static func == (objA: CaseStatus, objB: CaseStatus) -> Bool {
+        return objA.status == objB.status && objA.description == objB.description;
+    }    
 }
 
 enum Either<V, E: Error> {

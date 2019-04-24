@@ -29,8 +29,10 @@ class ViewController: NSViewController {
     }
     
     override func viewWillDisappear() {
-        prefs.caseNumber = caseNumber.stringValue
-        NotificationCenter.default.post(name: NSNotification.Name("PrefsChanged"), object: nil)
+        if prefs.caseNumber != caseNumber.stringValue {
+            prefs.caseNumber = caseNumber.stringValue
+            NotificationCenter.default.post(name: NSNotification.Name("PrefsChanged"), object: nil)
+        }
     }
     
     @IBOutlet weak var caseNumber: NSTextField!
