@@ -16,7 +16,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     var statusMenuItem = NSMenuItem(title: "", action: nil, keyEquivalent: "")
     var descriptionMenuItem = NSMenuItem(title: "", action: nil, keyEquivalent: "")
+    var lastUpdateMenuItem = NSMenuItem(title: "", action: nil, keyEquivalent: "")
     var ackMenuItem = NSMenuItem(title: "Aknowledge current status", action: #selector(acknowledgeCurrentStatus(sender:)), keyEquivalent: "")
+    
+    let dateFormater = DateFormatter()
     
     let updateInterval = 600.0
     var prefs = Preferences()
@@ -26,6 +29,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var preferencesController: NSWindowController?
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        dateFormater.dateFormat = "dd/mm/YYYY, h:mm:ss a"
+        
         if let button = statusItem.button {
             button.image = NSImage(named: "unchanged")
         }
@@ -33,6 +38,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         menu.addItem(statusMenuItem)
         menu.addItem(NSMenuItem.separator())
         menu.addItem(descriptionMenuItem)
+        menu.addItem(lastUpdateMenuItem)
         menu.addItem(NSMenuItem.separator())
         menu.addItem(ackMenuItem)
         menu.addItem(NSMenuItem(title: "Preferences...", action: #selector(showPrefeneces(sender:)), keyEquivalent: ","))
@@ -41,6 +47,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         statusMenuItem.isEnabled = false
         descriptionMenuItem.isEnabled = false
+        lastUpdateMenuItem.isEnabled = false
         menu.autoenablesItems = false
         
         statusItem.menu = menu
@@ -99,6 +106,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             statusMenuItem.title = "Error: Unable to get case status. Check case number."
             descriptionMenuItem.isHidden = true
         }
+        
+        lastUpdateMenuItem.title = "Updated at: " + dateFormater.string(from: Date())
     }
     
     @objc func showPrefeneces(sender: NSMenuItem) {
