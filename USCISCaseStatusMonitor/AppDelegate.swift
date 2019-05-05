@@ -86,10 +86,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         case .value(let currentStatus):
             self.currentStatus = currentStatus
             updateMenuBarIcon(newStatus: currentStatus)
-            
-            let description = splitStringToLines(
-                currentStatus.description.replacingOccurrences(of: "\\s+", with: " ", options: .regularExpression),
-                50)
             prefs.currentStatus = currentStatus
             
         case .error(_):
@@ -109,19 +105,4 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }
-}
-
-func splitStringToLines(_ str: String, _ approximateLength: Int) -> String {
-    var lines: [String] = []
-    var startIndex = str.startIndex
-    var midIndex = str.startIndex
-    while (midIndex != str.endIndex) {
-        str.formIndex(&midIndex, offsetBy: approximateLength, limitedBy: str.endIndex)
-        var endIndex = str[midIndex...].firstIndex(of: " ") ?? str.endIndex
-        lines.append(String(str[startIndex..<endIndex]))
-        str.formIndex(&endIndex, offsetBy: 1, limitedBy: str.endIndex)
-        startIndex = endIndex
-        midIndex = endIndex
-    }
-    return lines.joined(separator: "\n")
 }
