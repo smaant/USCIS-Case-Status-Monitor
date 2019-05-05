@@ -13,6 +13,7 @@ enum PrefKeys {
     static let caseNumber = "caseNumber"
     static let lastAcknowledgedStatus = "lastAcknowledgedStatus"
     static let currentStatus = "currentStatus"
+    static let lastSyncedAt = "lastSyncedAt"
 }
 
 func readCaseStatus(key: String) -> CaseStatus? {
@@ -60,6 +61,15 @@ struct Preferences {
         }
         set {
             writeCaseStatus(value: newValue, key: PrefKeys.currentStatus)
+        }
+    }
+    
+    var lastSyncedAt: String? {
+        get {
+            return UserDefaults.standard.string(forKey: PrefKeys.lastSyncedAt)
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: PrefKeys.lastSyncedAt)
         }
     }
 }

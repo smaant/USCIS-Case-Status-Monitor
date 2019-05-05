@@ -22,7 +22,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var currentStatus: CaseStatus?
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        dateFormater.dateFormat = "dd/mm/YYYY, h:mm:ss a"
+        dateFormater.dateFormat = "MM/dd/YYYY, h:mm:ss a"
         
         if let button = statusItem.button {
             button.image = NSImage(named: "unchanged")
@@ -90,7 +90,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 //            descriptionMenuItem.isHidden = true
         }
         
-//        lastUpdateMenuItem.title = "Updated at: " + dateFormater.string(from: Date())
+        prefs.lastSyncedAt = dateFormater.string(from: Date())
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {

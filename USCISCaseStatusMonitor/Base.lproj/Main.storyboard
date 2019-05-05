@@ -758,11 +758,11 @@
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zAI-Dh-v3M">
-                                <rect key="frame" x="6" y="9" width="88" height="17"/>
+                                <rect key="frame" x="6" y="9" width="81" height="17"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Last updated:" id="0jM-Zd-Caa">
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Last synced:" id="0jM-Zd-Caa">
                                     <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
@@ -774,9 +774,19 @@
                                     <wkPreferences key="preferences"/>
                                 </wkWebViewConfiguration>
                             </wkWebView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ttt-UB-uds">
+                                <rect key="frame" x="87" y="9" width="231" height="17"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" placeholderString="No data yet" id="CTm-TS-O8Y">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="lastSyncedAtLable" destination="ttt-UB-uds" id="ae3-0v-9jp"/>
                         <outlet property="statusWebView" destination="8Bl-sE-UPc" id="rIQ-cW-uLi"/>
                     </connections>
                 </viewController>

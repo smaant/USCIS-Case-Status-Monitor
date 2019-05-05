@@ -12,6 +12,7 @@ import WebKit
 class StatusViewController: NSViewController {
     
     @IBOutlet weak var statusWebView: WKWebView!
+    @IBOutlet weak var lastSyncedAtLable: NSTextField!
     
     var prefs = Preferences()
     
@@ -60,6 +61,9 @@ class StatusViewController: NSViewController {
     override func viewWillAppear() {
         loadWebView()
         setWindowHeight(windowHeight)
+        if let lastSyncedAt = prefs.lastSyncedAt {
+            lastSyncedAtLable.stringValue = lastSyncedAt
+        }
 
         statusWebView.evaluateJavaScript("document.readyState", completionHandler: {(complete, error) in
             if complete != nil {
