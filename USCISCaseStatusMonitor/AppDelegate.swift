@@ -21,9 +21,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var prefs = Preferences()
     var currentStatus: CaseStatus?
     
-    let storyboard = NSStoryboard(name: NSStoryboard.Name("Main"), bundle: nil)
-    var preferencesController: NSWindowController?
-
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         dateFormater.dateFormat = "dd/mm/YYYY, h:mm:ss a"
         
@@ -46,8 +43,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             self.prefs.lastAcknowledgedStatus = nil
             self.updateStatus()
         }
-        
-        preferencesController = storyboard.instantiateController(withIdentifier: "PreferencesWindowController") as? NSWindowController
     }
     
     @objc func togglePopover(sender: NSStatusBarButton) {
@@ -96,10 +91,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
 //        lastUpdateMenuItem.title = "Updated at: " + dateFormater.string(from: Date())
-    }
-    
-    @objc func showPrefeneces(sender: NSMenuItem) {
-        preferencesController?.showWindow(sender)
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {

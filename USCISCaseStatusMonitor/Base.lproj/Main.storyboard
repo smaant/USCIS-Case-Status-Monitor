@@ -753,6 +753,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <segue destination="XfG-lQ-9wD" kind="modal" id="eRa-eX-Iat"/>
+                                </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zAI-Dh-v3M">
                                 <rect key="frame" x="6" y="9" width="88" height="17"/>
@@ -785,4 +788,7 @@
     <resources>
         <image name="NSAdvanced" width="128" height="128"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="eRa-eX-Iat"/>
+    </inferredMetricsTieBreakers>
 </document>
