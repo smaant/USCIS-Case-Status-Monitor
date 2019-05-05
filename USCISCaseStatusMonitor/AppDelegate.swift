@@ -12,12 +12,8 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
-    let menu = NSMenu()
     
-    var statusMenuItem = NSMenuItem(title: "", action: nil, keyEquivalent: "")
-    var descriptionMenuItem = NSMenuItem(title: "", action: nil, keyEquivalent: "")
-    var lastUpdateMenuItem = NSMenuItem(title: "", action: nil, keyEquivalent: "")
-    var ackMenuItem = NSMenuItem(title: "Aknowledge current status", action: #selector(acknowledgeCurrentStatus(sender:)), keyEquivalent: "")
+    let popover = NSPopover()
     
     let dateFormater = DateFormatter()
     
@@ -33,29 +29,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         if let button = statusItem.button {
             button.image = NSImage(named: "unchanged")
+            button.action = #selector(togglePopover(sender:))
         }
-        
-        menu.addItem(statusMenuItem)
-        menu.addItem(NSMenuItem.separator())
-        menu.addItem(descriptionMenuItem)
-        menu.addItem(lastUpdateMenuItem)
-        menu.addItem(NSMenuItem.separator())
-        menu.addItem(ackMenuItem)
-        menu.addItem(NSMenuItem(title: "Preferences...", action: #selector(showPrefeneces(sender:)), keyEquivalent: ","))
-        menu.addItem(NSMenuItem.separator())
-        menu.addItem(NSMenuItem(title: "Quit", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
-        
-        statusMenuItem.isEnabled = false
-        descriptionMenuItem.isEnabled = false
-        lastUpdateMenuItem.isEnabled = false
-        menu.autoenablesItems = false
-        
-        statusItem.menu = menu
         
         updateStatus()
         Timer.scheduledTimer(withTimeInterval: updateInterval, repeats: true) { (timer) in
             self.updateStatus()
         }
+        
+        popover.behavior = .transient
+        popover.animates = false
+        popover.contentViewController = StatusViewController.loadFromNib()
+        popover.contentViewController?.loadView()
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name("PrefsChanged"), object: nil, queue: nil) { (notification) in
             self.prefs.lastAcknowledgedStatus = nil
@@ -63,6 +48,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
         preferencesController = storyboard.instantiateController(withIdentifier: "PreferencesWindowController") as? NSWindowController
+    }
+    
+    @objc func togglePopover(sender: NSStatusBarButton) {
+        if popover.isShown {
+            popover.performClose(sender)
+        } else {
+            if let button = statusItem.button {
+                popover.show(relativeTo: button.bounds, of: button, preferredEdge: .minY)
+            }
+        }
     }
     
     @objc func acknowledgeCurrentStatus(sender: NSMenuItem) {
@@ -79,10 +74,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         if prefs.lastAcknowledgedStatus == newStatus {
             statusItem.button?.image = NSImage(named: "unchanged")
-            ackMenuItem.isEnabled = false
+//            ackMenuItem.isEnabled = false
         } else {
             statusItem.button?.image = NSImage(named: "changed")
-            ackMenuItem.isEnabled = true
+//            ackMenuItem.isEnabled = true
         }
     }
     
@@ -95,19 +90,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             let description = splitStringToLines(
                 currentStatus.description.replacingOccurrences(of: "\\s+", with: " ", options: .regularExpression),
                 50)
-            
-            statusMenuItem.title = currentStatus.status
-            descriptionMenuItem.attributedTitle = NSAttributedString(string: description, attributes: nil)
-            descriptionMenuItem.isHidden = false
+            prefs.currentStatus = currentStatus
             
         case .error(_):
             self.currentStatus = nil
             updateMenuBarIcon(newStatus: nil)
-            statusMenuItem.title = "Error: Unable to get case status. Check case number."
-            descriptionMenuItem.isHidden = true
+//            statusMenuItem.title = "Error: Unable to get case status. Check case number."
+//            descriptionMenuItem.isHidden = true
         }
         
-        lastUpdateMenuItem.title = "Updated at: " + dateFormater.string(from: Date())
+//        lastUpdateMenuItem.title = "Updated at: " + dateFormater.string(from: Date())
     }
     
     @objc func showPrefeneces(sender: NSMenuItem) {

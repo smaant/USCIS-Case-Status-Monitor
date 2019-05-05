@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <plugIn identifier="com.apple.WebKit2IBPlugin" version="14460.31"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -737,5 +738,51 @@
             </objects>
             <point key="canvasLocation" x="-9.5" y="606.5"/>
         </scene>
+        <!--Status View Controller-->
+        <scene sceneID="Iqh-eh-hYl">
+            <objects>
+                <viewController storyboardIdentifier="StatusViewController" id="bxP-Ru-O3y" customClass="StatusViewController" customModule="USCISCaseStatusMonitor" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="InN-CL-Pd2">
+                        <rect key="frame" x="0.0" y="0.0" width="386" height="69"/>
+                        <autoresizingMask key="autoresizingMask" heightSizable="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="34P-J7-yE2">
+                                <rect key="frame" x="360" y="6" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                <buttonCell key="cell" type="squareTextured" bezelStyle="texturedSquare" image="NSAdvanced" imagePosition="only" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="N1v-4N-fF3">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zAI-Dh-v3M">
+                                <rect key="frame" x="6" y="9" width="88" height="17"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Last updated:" id="0jM-Zd-Caa">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <wkWebView wantsLayer="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Bl-sE-UPc">
+                                <rect key="frame" x="0.0" y="34" width="386" height="35"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="statusWebView" destination="8Bl-sE-UPc" id="rIQ-cW-uLi"/>
+                    </connections>
+                </viewController>
+                <customObject id="LXE-SW-TLU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="448" y="375.5"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="NSAdvanced" width="128" height="128"/>
+    </resources>
 </document>
