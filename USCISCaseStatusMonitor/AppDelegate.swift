@@ -36,7 +36,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         popover.behavior = .transient
         popover.animates = false
-        popover.contentViewController = StatusViewController.loadFromNib()
+        popover.contentViewController = PopoverViewController.loadFromNib()
         popover.contentViewController?.loadView()
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name("PrefsChanged"), object: nil, queue: nil) { (notification) in
@@ -79,9 +79,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func updateStatus() {
         switch USCISStatus().fetchCurrentStatus(caseNumber: prefs.caseNumber ?? "") {
         case .value(let currentStatus):
+            if prefs.currentStatus != currentStatus {
+                prefs.currentStatus = currentStatus
+                NotificationCenter.default.post(name: NSNotification.Name("StatusChanged"), object: nil)
+            }
             self.currentStatus = currentStatus
             updateMenuBarIcon(newStatus: currentStatus)
-            prefs.currentStatus = currentStatus
             
         case .error(_):
             self.currentStatus = nil

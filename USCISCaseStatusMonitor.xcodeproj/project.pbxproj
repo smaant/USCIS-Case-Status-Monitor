@@ -8,10 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		6571FD67226BE5F10009AE2C /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6571FD66226BE5F10009AE2C /* Preferences.swift */; };
-		6571FD6922780BD80009AE2C /* StatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6571FD6822780BD80009AE2C /* StatusViewController.swift */; };
+		6571FD6922780BD80009AE2C /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6571FD6822780BD80009AE2C /* PopoverViewController.swift */; };
 		6571FD6E227EA70E0009AE2C /* my_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 6571FD6D227EA70E0009AE2C /* my_logo.png */; };
+		6571FD70227FB1F30009AE2C /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6571FD6F227FB1F30009AE2C /* TabViewController.swift */; };
+		65B3AD5C227FFE9800CD6CA7 /* StatusTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B3AD5B227FFE9800CD6CA7 /* StatusTabViewController.swift */; };
 		65BC4C2C2268500E00E3502E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BC4C2B2268500E00E3502E /* AppDelegate.swift */; };
-		65BC4C2E2268500E00E3502E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BC4C2D2268500E00E3502E /* ViewController.swift */; };
+		65BC4C2E2268500E00E3502E /* PreferencesTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BC4C2D2268500E00E3502E /* PreferencesTabViewController.swift */; };
 		65BC4C302268500F00E3502E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65BC4C2F2268500F00E3502E /* Assets.xcassets */; };
 		65BC4C332268500F00E3502E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65BC4C312268500F00E3502E /* Main.storyboard */; };
 		65BC4C3F2268500F00E3502E /* USCIS_Case_Status_CheckerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BC4C3E2268500F00E3502E /* USCIS_Case_Status_CheckerTests.swift */; };
@@ -48,11 +50,13 @@
 
 /* Begin PBXFileReference section */
 		6571FD66226BE5F10009AE2C /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
-		6571FD6822780BD80009AE2C /* StatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusViewController.swift; sourceTree = "<group>"; };
+		6571FD6822780BD80009AE2C /* PopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
 		6571FD6D227EA70E0009AE2C /* my_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = my_logo.png; sourceTree = "<group>"; };
+		6571FD6F227FB1F30009AE2C /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
+		65B3AD5B227FFE9800CD6CA7 /* StatusTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusTabViewController.swift; sourceTree = "<group>"; };
 		65BC4C282268500E00E3502E /* USCISCaseStatusMonitor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = USCISCaseStatusMonitor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65BC4C2B2268500E00E3502E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		65BC4C2D2268500E00E3502E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		65BC4C2D2268500E00E3502E /* PreferencesTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesTabViewController.swift; sourceTree = "<group>"; };
 		65BC4C2F2268500F00E3502E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		65BC4C322268500F00E3502E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		65BC4C342268500F00E3502E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -120,15 +124,17 @@
 			isa = PBXGroup;
 			children = (
 				6571FD6A227D2DFA0009AE2C /* Images */,
-				6571FD6822780BD80009AE2C /* StatusViewController.swift */,
+				6571FD6822780BD80009AE2C /* PopoverViewController.swift */,
+				65B3AD5B227FFE9800CD6CA7 /* StatusTabViewController.swift */,
 				65BC4C4B226A79CD00E3502E /* USCISCaseStatusMonitor.entitlements */,
 				65BC4C2B2268500E00E3502E /* AppDelegate.swift */,
-				65BC4C2D2268500E00E3502E /* ViewController.swift */,
+				65BC4C2D2268500E00E3502E /* PreferencesTabViewController.swift */,
 				65BC4C2F2268500F00E3502E /* Assets.xcassets */,
 				65BC4C312268500F00E3502E /* Main.storyboard */,
 				65BC4C342268500F00E3502E /* Info.plist */,
 				65BC4C492269A0B200E3502E /* CaseStatus.swift */,
 				6571FD66226BE5F10009AE2C /* Preferences.swift */,
+				6571FD6F227FB1F30009AE2C /* TabViewController.swift */,
 			);
 			path = USCISCaseStatusMonitor;
 			sourceTree = "<group>";
@@ -251,11 +257,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6571FD70227FB1F30009AE2C /* TabViewController.swift in Sources */,
 				65BC4C4A2269A0B200E3502E /* CaseStatus.swift in Sources */,
-				65BC4C2E2268500E00E3502E /* ViewController.swift in Sources */,
+				65BC4C2E2268500E00E3502E /* PreferencesTabViewController.swift in Sources */,
 				6571FD67226BE5F10009AE2C /* Preferences.swift in Sources */,
+				65B3AD5C227FFE9800CD6CA7 /* StatusTabViewController.swift in Sources */,
 				65BC4C2C2268500E00E3502E /* AppDelegate.swift in Sources */,
-				6571FD6922780BD80009AE2C /* StatusViewController.swift in Sources */,
+				6571FD6922780BD80009AE2C /* PopoverViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

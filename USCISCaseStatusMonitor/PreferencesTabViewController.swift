@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  PreferencesViewController.swift
 //  USCIS Case Status Checker
 //
 //  Created by Anton Panferov on 4/17/19.
@@ -8,7 +8,9 @@
 
 import Cocoa
 
-class ViewController: NSViewController {
+class PreferencesTabViewController: NSViewController {
+    
+    @IBOutlet weak var caseNumber: NSTextField!
     
     var prefs = Preferences()
 
@@ -17,11 +19,6 @@ class ViewController: NSViewController {
         caseNumber.stringValue = prefs.caseNumber ?? ""
     }
     
-    override func viewWillAppear() {
-        NSApplication.shared.activate(ignoringOtherApps: true)
-        view.window?.level = .floating
-    }
-
     override var representedObject: Any? {
         didSet {
         // Update the view, if already loaded.
@@ -34,7 +31,5 @@ class ViewController: NSViewController {
             NotificationCenter.default.post(name: NSNotification.Name("PrefsChanged"), object: nil)
         }
     }
-    
-    @IBOutlet weak var caseNumber: NSTextField!
 }
 
