@@ -40,10 +40,10 @@ class USCISStatus {
         }
         
         let request = URLRequest(url: urlComponent.url!)
-        var response: AutoreleasingUnsafeMutablePointer<URLResponse?>? = nil
+        let response: AutoreleasingUnsafeMutablePointer<URLResponse?>? = nil
         let data = try? NSURLConnection.sendSynchronousRequest(request, returning: response)
         
-        if let doc = try? HTML(html: String(decoding: data!, as: UTF8.self), encoding: .utf8) {
+        if data != nil, let doc = try? HTML(html: String(decoding: data!, as: UTF8.self), encoding: .utf8) {
             if doc.at_xpath("//div[@id='formErrorMessages']/h4") != nil {
                 return Either.error(.noStatusError)
             }
